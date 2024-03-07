@@ -1,4 +1,4 @@
-'use server'
+
 //Double Check if use server is necessary
 import CartItems from "@/app/components/cartItems"
 
@@ -8,7 +8,7 @@ const Cart = () => {
    aria-modal="true"
    role="dialog"
    tabIndex="-1">
-      <CartItems/>
+      
    </div>
 
   )

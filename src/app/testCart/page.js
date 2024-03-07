@@ -7,6 +7,7 @@ import axios from "axios"
 import Stripe from "stripe"
 import Navbar from "../components/NavBar/navbar"
 import Footer from "../components/footer/footer"
+import { getStripe } from '../utils/getClient/page'
 
 const Cart = () => {
     const ctx=useStoreContext()
@@ -17,13 +18,15 @@ const Cart = () => {
      //const [cartData,setCartData]=useState([]);
      const [loading,setLoading]=useState();
      const [imageSet,setImageSet]=useState()
+     
     // const {data:session, status}=useSession()
-    const client=createClient({
+    {/*const client=createClient({
      projectId:process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
      dataset:process.env.NEXT_PUBLIC_SANITY_DATASET,
      apiVersion:"2023-11-30",
      useCdn:false
     })
+*/}
     //console.log('User Information:',props.currentUser)
      useEffect(()=>{
          fetchProducts()
@@ -44,7 +47,8 @@ const Cart = () => {
       const fetchProducts=async()=>{
          
          try{
-             const stripe=new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`)
+             //const stripe=new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`)
+             const stripe=getStripe();
              const {data}=await stripe.products.list()
          setProducts(data)
          console.log(data)
@@ -55,7 +59,8 @@ const Cart = () => {
       }
       const fetchPrices=async()=>{
          try{
-             const stripe =new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`)
+             //const stripe =new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`)
+             const stripe=getStripe();
          const {data}=await stripe.prices.list()
             
             setPrices(data)

@@ -1,4 +1,5 @@
-"use client"
+'use server'
+//Double Check if use server is necessary
 import CartItems from "@/app/components/cartItems"
 
 const Cart = () => {

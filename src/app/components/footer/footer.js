@@ -11,13 +11,13 @@ const Footer = () => {
               <Image className=" w-12 h-10 " src="https://flowbite.com/docs/images/logo.svg"  width={2} height={2} quality={100} sizes="max-width:20vw" alt='Logo' />
             </div>
             <div className=" md:self-end  " >
-              <Link className=" md:text-xl "  href='' >GitHub</Link>
+              <Link className=" md:text-xl "  href='https://github.com/julian934' >GitHub</Link>
             </div>
             <div className=" md:self-end " >
-              <Link className=' md:text-xl   ' href='' >Instagram</Link>
+              <Link className=' md:text-xl   ' href='https://www.instagram.com/jbthedev' >Instagram</Link>
             </div>
             <div className=" md:self-end  " >
-              <Link className=' md:text-xl  ' href=''  >LinkedIn</Link>
+              <Link className=' md:text-xl  ' href='https://www.linkedin.com/in/julian-borner-709b91b7/'  >LinkedIn</Link>
             </div>
             <hr className=" border-gray-200 w-full md:col-span-4 md:self-end md:flex md:pl-4 md:pr-4 md:w-2/3 md:justify-self-center " />
             <div className=" flex   md:col-span-4 md:self-center md:flex-row md:justify-center md:flex md:space-around md:self-end  " >

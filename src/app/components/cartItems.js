@@ -195,7 +195,7 @@ const handleRemove=(id)=>{
         href="#"
         className="block rounded border border-gray-600 px-5 py-3 text-sm text-gray-600 transition hover:ring-1 hover:ring-gray-400"
       >
-        View my cart ({cartData.length})
+        Items in cart: ({cartData.length})
       </Link>
 
       <button

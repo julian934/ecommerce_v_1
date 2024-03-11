@@ -165,7 +165,7 @@ const AuthForm=()=>{
             </p>
           </div>
           <p className="mt-4 text-sm text-gray-500 sm:mt-0">
-              Don `&apos` t have an account? 
+              Don&apost have an account? 
               <a href="/integration_test/sign-up" className="text-gray-700 underline">Sign Up</a>.
             </p>
 

@@ -7,7 +7,7 @@ import {useState,useEffect,useContext} from 'react'
 import {StoreStateContext, useStoreContext} from '../context/storecontext'
 import Image from 'next/image';
 import { urlForImage } from '../../../sanity/lib/image';
-import products from '../../../sanity/schemas/products';
+//import products from '../../../sanity/schemas/products';
 
 //revise the context and make sure it can take context.
 const PricingCard = ({product,prices,prodImage}) => {
@@ -16,15 +16,15 @@ const PricingCard = ({product,prices,prodImage}) => {
     const prodId=product.default_price
     let ID=prodId.toString().trim()
     const item=prices.find(price=>price.id==prodId)
-    console.log(prodImage[0].image)
-    const finalImage=prodImage.filter(item=>item.name==product.name)
+   // console.log(prodImage[0].image)
+    //const finalImage=prodImage.filter(item=>item.name==product.name)
     console.log(product.id)
     
-    let realImage=finalImage.image
-    console.log(finalImage.image)
-    console.log(realImage)
-    console.log(finalImage)
-    console.log(item.id)
+    //let realImage=finalImage.image
+    //console.log(finalImage.image)
+    //console.log(realImage)
+    //console.log(finalImage)
+    //console.log(item.id)
     console.log(product)
     console.log(prodId)
     console.log(prices)
@@ -34,16 +34,16 @@ const PricingCard = ({product,prices,prodImage}) => {
     console.log(ctx.wishList)
     useEffect(()=>{
         getData()
-        setImageData()
+       // setImageData()
         findPrice()
     },[])
-    const setImageData=async ()=>{
+    /*const setImageData=async ()=>{
         const currData=prodImage.find(item=>item.name==product.name)
         setCurrImage(currData)
         //console.log(currData.image)
         console.log(currImage)
-    }
-    console.log(currImage)
+    }*/
+    //console.log(currImage)
     //fix image connection.
     const getData=async()=>{
         try{
@@ -78,7 +78,7 @@ const PricingCard = ({product,prices,prodImage}) => {
                 className="h-full w-full object-cover object-center group-hover:opacity-75 rounded-2xl "  
                  />
                  <h1 className=" mt-4 text-md text-gray-700 "  >{product.name}</h1>
-                 <h3 className=" mt-1 text-lg font-medium text-gray-900 " >$ {pricing.unit_amount}</h3>
+                 <h3 className=" mt-1 text-lg font-medium text-gray-900 " >$ {product.default_price}</h3>
            </Link>
   )
 }

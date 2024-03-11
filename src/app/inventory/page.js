@@ -33,17 +33,19 @@ const Index=(props)=>{
     const [imageSet,setImageSet]=useState()
     const {data:session}=useSession();
    // const {data:session, status}=useSession()
-   const client=createClient({
+   /*const client=createClient({
     projectId:process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     dataset:process.env.NEXT_PUBLIC_SANITY_DATASET,
     apiVersion:"2023-11-30",
     useCdn:false
    })
+   */
+  console.log(products)
    console.log('User Information:',props.currentUser)
     useEffect(()=>{
         fetchProducts();
         fetchPrices();
-        fetchImages();
+        //fetchImages();
         getData();
     },[])
     let getData=()=>{
@@ -62,16 +64,16 @@ const Index=(props)=>{
      }
      const fetchPrices=async()=>{
         try{
-            const stripe =new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`)
-        const {data}=await stripe.prices.list()
-           
+            //const stripe =new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`)
+        //const {data}=await stripe.prices.list()
+           const {data}=await axios.get('/api/getprices') 
            setPrices(data)
            console.log(data)
         }catch(error){
             console.log(error)
         }
      }
-     const fetchImages= async()=>{
+     /*const fetchImages= async()=>{
         const query=`*[_type=="products"]{
             image,name
         }`
@@ -79,6 +81,7 @@ const Index=(props)=>{
         console.log(images)
         setImageSet(images)
      }
+     */
      const sendToCart=()=>{
         ctx.addToCart()
      }

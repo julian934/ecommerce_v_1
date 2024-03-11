@@ -200,7 +200,7 @@ const removeItem=()=>{
        <div className="  max-sm:w-5/6 self-center max-sm:h-5/6 md:h-full md:flex md:flex-col md:self-start " >
         <h3 className=" md:text-2xl flex" >Description</h3>
         {/* Description from Product Description */}
-         <p className=" md:text-lg " > {itemData.description && itemData.description} </p> 
+         <p className=" md:text-lg " > {/*itemData.description && itemData.description*/} </p> 
         
        </div>
     </div>

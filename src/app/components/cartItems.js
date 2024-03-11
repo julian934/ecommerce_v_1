@@ -5,16 +5,17 @@ import {StoreStateContext, useStoreContext} from '../context/storecontext'
 import axios from 'axios'
 import Link from 'next/link';
 import Image from 'next/image'
-import Stripe from 'stripe'
-import { renderToReadableStream } from 'next/dist/server/app-render/entry-base'
+//import Stripe from 'stripe'
+//import { renderToReadableStream } from 'next/dist/server/app-render/entry-base'
 
 //Don't forget error and exception handling!!!
+//Deployment react server error is somewhere in CartItems
 
 const CartItems = ({prices, products,cartVals}) => {
    const [cartData,setCartData]=useState([]);
    const [viewCart,setViewCart]=useState(false);
    const [cartTest,setCartTest]=useState([]);
-   const [prods,setProds]=useState([]);
+  // const [prods,setProds]=useState([]);
    const [renderedCart,setRenderedCart]=useState([]);
    const ctx=useStoreContext()
   
@@ -22,10 +23,11 @@ const CartItems = ({prices, products,cartVals}) => {
     console.log(cartVals)
     console.log(products)
     console.log(prices)
+    console.log(cartData)
    // console.log(singleProd)
    useEffect(()=>{
         fetchData();
-       // getData();
+       getData(products);
    },[renderedCart])
 
    const fetchData=()=>{
@@ -43,32 +45,33 @@ const CartItems = ({prices, products,cartVals}) => {
  cartData.forEach((item)=>{
    prodArray.push(item.product)
  })
- products.forEach((p)=>{
-  if(cartData.includes(p.id)){
-    setRenderedCart('yes')
+let prodCheck=(db,value)=>{
+    db.forEach((it)=>{
+      if(it.id==value){
+        setRenderedCart([...renderedCart,it])
+      }
+    })
+    
   }
- })
- console.log(prodArray)
-
- /*let getData=async()=>{
-  let prodArray=[]
- cartData.forEach((item)=>{
-   prodArray.push(item.product)
- })
-  
-  prodArray.forEach((item)=>{
-    prodCheck(item)
-  })
-  let prodCheck=(value)=>{
-    const vals=products.find(item=>item.id==value)
-    setRenderedCart([...renderedCart,vals])
-  }
-
-  
- }*/
-
 
  
+
+
+ let getData=(items)=>{
+  let prodArray=[]
+  cartData.forEach((item)=>{
+    prodCheck(items,item)
+  })
+  console.log(renderedCart)
+  
+
+  
+ }
+ 
+
+
+ //console.log(prodArray)
+ console.log(renderedCart)
  console.log(renderedCart)
  const handlePurchase=async(e)=>{
          

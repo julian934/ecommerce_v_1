@@ -2,16 +2,17 @@
 import CartItems from "../components/cartItems"
 import {useState,useEffect,} from 'react'
 import { useStoreContext } from "../context/storecontext"
-import { createClient } from 'next-sanity'
+
 import axios from "axios"
-import Stripe from "stripe"
+
 import Navbar from "../components/NavBar/navbar"
 import Footer from "../components/footer/footer"
-import { getStripe } from '../utils/getClient/page'
-
+//import { getStripe } from '../utils/getClient/page'
+import { getProducts } from "../utils/getProducts/page"
+import { getPrices } from "../utils/getPrices/page"
 const Cart = () => {
-    const ctx=useStoreContext()
-     console.log(ctx.cartList)
+    //const ctx=useStoreContext()
+     //console.log(ctx.cartList)
      const [products,setProducts]=useState([]);
      const [prices,setPrices]=useState([]);
      const [prod,setProd]=useState([]);
@@ -31,7 +32,7 @@ const Cart = () => {
      useEffect(()=>{
          fetchProducts()
          fetchPrices()
-         fetchImages()
+         
          grabProd()
      },[])
      
@@ -48,8 +49,11 @@ const Cart = () => {
          
          try{
              //const stripe=new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`)
-             const stripe=getStripe();
-             const {data}=await stripe.products.list()
+             //const stripe=getStripe();
+             
+             const stripe=await axios.get('/api/getproducts')
+             //const {productData}= getProducts()
+             const {data}=stripe
          setProducts(data)
          console.log(data)
   
@@ -60,8 +64,9 @@ const Cart = () => {
       const fetchPrices=async()=>{
          try{
              //const stripe =new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`)
-             const stripe=getStripe();
-         const {data}=await stripe.prices.list()
+             //const stripe=getStripe();
+             const stripe=await axios.get('/api/getprices')
+         const {data}= stripe
             
             setPrices(data)
             console.log(data)
@@ -85,25 +90,29 @@ const Cart = () => {
         }
       }
       const fetchImages= async()=>{
-         const query=`*[_type=="products"]{
+       /*  const query=`*[_type=="products"]{
              image,name
          }`
          const images=await client.fetch(query)
          console.log(images)
          setImageSet(images)
+         */
       }
       const sendToCart=()=>{
          ctx.addToCart()
       }
       //Add a render cart method
+      const {productData}= getProducts()
+      const {priceData}=getPrices()
   return (
    <div className="max-sm:relative md:flex md:flex-col md:gap-y-20 w-screen h-screen max-sm:max-w-sm border border-gray-600 bg-white px-4 py-8 sm:px-6 lg:px-8"
    aria-modal="true"
    role="dialog"
-   tabIndex="-1">
+   >
       
       <Navbar/>
-      <CartItems products={products} prices={prices} cartVals={prod}  />
+      <CartItems products={products} prices={prices} cartVals={prod}  /> 
+       {/* <CartItems products={productData} prices={priceData} /> */}
       <Footer/>
    </div>
 

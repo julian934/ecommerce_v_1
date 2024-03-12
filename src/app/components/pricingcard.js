@@ -12,7 +12,7 @@ import { urlForImage } from '../../../sanity/lib/image';
 //revise the context and make sure it can take context.
 const PricingCard = ({product,prices,prodImage}) => {
     const [pricing,setPricing]=useState([])
-    const [currImage,setCurrImage]=useState();
+    const [currData,setCurrData]=useState([]);
     const prodId=product.default_price
     let ID=prodId.toString().trim()
     const item=prices.find(price=>price.id==prodId)
@@ -36,6 +36,7 @@ const PricingCard = ({product,prices,prodImage}) => {
         getData()
        // setImageData()
         findPrice()
+        check()
     },[])
     /*const setImageData=async ()=>{
         const currData=prodImage.find(item=>item.name==product.name)
@@ -63,6 +64,14 @@ const PricingCard = ({product,prices,prodImage}) => {
          setPricing(price)
          console.log(pricing)
      }
+     let check=async()=>{
+        let checkData=await product.default_price
+        let setData=await axios.get(`api/getprice/?id=${checkData}`)
+        setCurrData(setData.data)
+     }
+     console.log(currData)
+     console.log(product)
+     console.log(prices)
      console.log(pricing)
     
     //Add colors in the config file.
@@ -78,7 +87,7 @@ const PricingCard = ({product,prices,prodImage}) => {
                 className="h-full w-full object-cover object-center group-hover:opacity-75 rounded-2xl "  
                  />
                  <h1 className=" mt-4 text-md text-gray-700 "  >{product.name}</h1>
-                 <h3 className=" mt-1 text-lg font-medium text-gray-900 " >$ {product.default_price}</h3>
+                 <h3 className=" mt-1 text-lg font-medium text-gray-900 " >$ {pricing.unit_amount}</h3>
            </Link>
   )
 }

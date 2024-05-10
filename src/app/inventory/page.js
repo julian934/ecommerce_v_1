@@ -9,12 +9,15 @@ import Stripe from "stripe";
 import StoreStateContext from '@/app/context/storecontext'
 import {useSession} from "next-auth/react"
 import Navbar from '../components/NavBar/navbar'
+import NavTest from '../components/testNavBar/page'
 import { createClient } from 'next-sanity'
 import Footer from '../components/footer/footer'
+import Loading from '../components/loading/page'
 const stripePromise=loadStripe(
     `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
 )
 import { useStoreContext } from '@/app/context/storecontext'
+import { useQuery } from '@tanstack/react-query'
 //Add loading state for this page if data is not loaded yet.
 //Get Stock Images.
 //Create dynamic item details pages for inventory items & add to cart options from details page. 
@@ -31,7 +34,7 @@ const Index=(props)=>{
     const [prices,setPrices]=useState([])
     const [loading,setLoading]=useState();
     const [imageSet,setImageSet]=useState()
-    const {data:session}=useSession();
+
    // const {data:session, status}=useSession()
    /*const client=createClient({
     projectId:process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -40,6 +43,7 @@ const Index=(props)=>{
     useCdn:false
    })
    */
+  //TO accurately use loading spinner, update with useQuery and attach loading spinner to isLoading state
   console.log(products)
    console.log('User Information:',props.currentUser)
     useEffect(()=>{
@@ -51,6 +55,7 @@ const Index=(props)=>{
     let getData=()=>{
         //GET CART DATA FROM LOCALSTORAGE AND DISPENSE IT HERE
        }
+       
      const fetchProducts=async()=>{
         
         try{
@@ -86,14 +91,17 @@ const Index=(props)=>{
         ctx.addToCart()
      }
      
-  
+      
     return(
-    <div className="flex flex-wrap bg-white overflow-visible h-full md:pt-4  " >
-        <Navbar/>
+    <div className="flex flex-wrap bg-white overflow-visible h-full md:pt-4 max-sm:space-y-2  " >
+        
+         <Navbar/>
+            {/* <NavTest/>*/}
         <div className=" mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 h-full md:gap-y-6  " >
             <div className=" flex md:justify-center md:h-full md:w-full " >
-            <h1 className=" md:justify-self-center md:text-2xl text-amber-500 " >Welcome!</h1>
+            {/*<h1 className=" md:justify-self-center md:text-2xl text-amber-500 " >Welcome!</h1> */}
             </div>
+            {!products || !prices && <Loading/>}
         <div className=" grid grid-cols-1 gap-x-4 gap-y-24 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 " >
         {products.map((product)=>(
           <PricingCard key={product.id} product={product}  prices={prices} prodImage={imageSet}  />

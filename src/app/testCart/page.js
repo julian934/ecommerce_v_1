@@ -105,7 +105,7 @@ const Cart = () => {
       const {productData}= getProducts()
       const {priceData}=getPrices()
   return (
-   <div className="max-sm:relative md:flex md:flex-col md:gap-y-20 w-screen h-screen max-sm:max-w-sm border border-gray-600 bg-white px-4 py-8 sm:px-6 lg:px-8"
+   <div className="max-sm:flex max-sm:flex-col md:flex md:flex-col md:gap-y-20 w-screen h-screen max-sm:max-w-sm border border-gray-600 bg-white px-4 py-8 sm:px-6 lg:px-8"
    aria-modal="true"
    role="dialog"
    >

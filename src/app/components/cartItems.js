@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useCallback } from 'react'
 import {useState,useEffect,useContext} from 'react'
 import {StoreStateContext, useStoreContext} from '../context/storecontext'
 import axios from 'axios'
@@ -15,6 +15,7 @@ const CartItems = ({prices, products,cartVals}) => {
    const [cartData,setCartData]=useState([]);
    const [viewCart,setViewCart]=useState(false);
    const [cartTest,setCartTest]=useState([]);
+   const [UIData,setUIData]=useState([])
   // const [prods,setProds]=useState([]);
    const [renderedCart,setRenderedCart]=useState([]);
    const ctx=useStoreContext()
@@ -26,16 +27,18 @@ const CartItems = ({prices, products,cartVals}) => {
     console.log(cartData)
    // console.log(singleProd)
    useEffect(()=>{
+        
         fetchData();
        getData(products);
-   },[renderedCart])
+       getCartUI()
+       //fetchUI works but causes infinite loop, try useCallback hook or implementing Tanstack-Query
+      // fetchUI()
+   },[])
 
    const fetchData=()=>{
     const userData=JSON.parse(localStorage.getItem('cartid'));
     const renderCart=JSON.parse(localStorage.getItem('renderCart'))
-    
     setCartData(userData)
-   
     //setCartData(userData)
  console.log(userData)
  //Update:
@@ -98,15 +101,41 @@ const handleRemove=(id)=>{
   setCartData(newCartData)
 
 }
-
-
-   console.log()
+let getCartUI=async()=>{
+  ctx.dataChecker(products)
+  
+}
+/*let fetchUI=async()=>{
+  //const UI=JSON.parse(localStorage.getItem('cartui'))
+  let uiinfo=await JSON.parse(localStorage.getItem('cartui'))
+  //setUIData(uiinfo)
+  let finData=[];
+   if(cartData && products){
+    //Successful but unfinite loop is caused
+    let data=await  console.log('Data In Cart')
+    let checkData=await products.filter(prod=>prod.id==cartData[0].product)
+   setUIData(checkData)
+    return data
+   } 
+}*/
+useEffect(() => {
+  //Algorithm for filtering through products by detecting if some cartData IDs are present in the products object and
+  //returning the values that evaluate to true.
+  if (cartData.length > 0 && products.length > 0) {
+    const filteredProducts = products.filter(prod => cartData.some(item => item.product === prod.id));
+    setUIData(filteredProducts);
+  }
+}, [cartData, products]);
+   console.log(UIData)
+   console.log(ctx.cartUI)
    console.log(ctx.cartList)
    console.log(cartData)
    console.log(renderedCart)
    console.log(products)
+   
    //Dynamically render cart Items & increase the quantity based on ID, then send it to the backend.
     {/* Convert product data to price data. */}
+    //Include data from UI and include quality images
    if(cartData.length>0){
     return (
            
@@ -139,9 +168,9 @@ const handleRemove=(id)=>{
 
   <div className="mt-4 space-y-6">
     <ul className="space-y-4">
-    {cartVals && cartVals.map((item)=>
+    {ctx.cartUI && UIData.map((item)=>
       <li className="flex items-center gap-4  " key={item.id}  >
-      <Image className=" h-16 w-16 rounded object-cover " src={item.images[0]} width={2} quality={75} height={2} alt={item.description}/>
+      <Image className=" h-16 w-16 rounded object-cover " src={item.images[0]} width={2} quality={100} height={2} alt={item.description}/>
       <div className="  " key={item.id} >
          <h3 className=" text-sm text-gray-900 " >{item.name}</h3>
          <dl className="mt-0.5 space-y-px text-[10px] text-gray-600" >

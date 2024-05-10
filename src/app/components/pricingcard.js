@@ -13,6 +13,7 @@ import { urlForImage } from '../../../sanity/lib/image';
 const PricingCard = ({product,prices,prodImage}) => {
     const [pricing,setPricing]=useState([])
     const [currData,setCurrData]=useState([]);
+    const [priceFormat,setPriceFormat]=useState()
     const prodId=product.default_price
     let ID=prodId.toString().trim()
     const item=prices.find(price=>price.id==prodId)
@@ -30,6 +31,7 @@ const PricingCard = ({product,prices,prodImage}) => {
     console.log(prices)
     console.log(prices.id)
     const ctx=useStoreContext()
+    
     console.log(ctx.cartList)
     console.log(ctx.wishList)
     useEffect(()=>{
@@ -61,7 +63,9 @@ const PricingCard = ({product,prices,prodImage}) => {
      const findPrice=()=>{
          let prodPrice=product.default_price;
          let price=prices.find(it=>it.id==prodPrice)
+         
          setPricing(price)
+         ctx?.priceData(price?.unit_amount)
          console.log(pricing)
      }
      let check=async()=>{
@@ -73,13 +77,26 @@ const PricingCard = ({product,prices,prodImage}) => {
      console.log(product)
      console.log(prices)
      console.log(pricing)
-    
+     
+     //ctx.formatter(pricing.unit_amount)
+     //console.log(ctx.priceFormat)
     //Add colors in the config file.
     //Reconfigure with divs around each element for flexbox optimization.
     //Note: The full viewport width is accessible but grid must be modified to access past individual grids.
     //Container fill for the images.
     //Test for images first
     //Modify to make the design work. Simple product list from tailwindui.com
+    //let data=pricing.unit_amount
+    //let priceInfo
+    //PriceInfo comes out to differen than unit amount. explore why.
+    //pricing?priceInfo=ctx.priceFormat:''
+    const currPricing=pricing?.unit_amount
+    const formattedPrice=(currPricing/100).toFixed(2)
+    ctx.priceMap(formattedPrice)
+    localStorage.setItem('pricemap',JSON.stringify(formattedPrice))
+    console.log(ctx.prices)
+    //send accepted price data to context state and order via index.
+    
   return (<Link className=" group h-full  " href={`/integration_test/${product.id}`} >
             <Image 
                src={product.images[0]} 
@@ -87,7 +104,14 @@ const PricingCard = ({product,prices,prodImage}) => {
                 className="h-full w-full object-cover object-center group-hover:opacity-75 rounded-2xl "  
                  />
                  <h1 className=" mt-4 text-md text-gray-700 "  >{product.name}</h1>
-                 <h3 className=" mt-1 text-lg font-medium text-gray-900 " >$ {pricing.unit_amount}</h3>
+                 {pricing && (
+                    <>
+                
+                      <h3 className=" mt-1 text-lg font-medium md:w-full text-gray-900 " >$ {formattedPrice}</h3>
+                      {/*<h3 className=" mt-1 text-lg font-medium text-gray-900 " >$ {priceInfo}</h3> */} 
+                    </>
+                 )}
+                 
            </Link>
   )
 }

@@ -8,9 +8,15 @@ import {createContext,React,useContext,useState} from 'react'
  const StoreStateContext=createContext({
     cartList:null,
     addToCart:function(id){},
-    removeFromCart:function(id){}
-    
-     
+    removeFromCart:function(id){},
+    formatter:function(arr){},
+     dataChecker:function(prod,price){},
+     priceFormat:null,
+     cartUI:null,
+     pricevis:null,
+     priceData:function(value){},
+     prices:null,
+     priceMap:function(){}
 })
 
 export const StoreStateContextProvider=({children})=>{
@@ -27,9 +33,17 @@ export const StoreStateContextProvider=({children})=>{
     const [searchResults, setSearchResults]=useState([])
     const [searchQuery, setSearchQuery]=useState([])
     const [searcher,setSearcher]=useState([])
+    const [pricevis,setPriceVis]=useState([])
     const [renderedCart,setRenderedCart]=useState([]);
+    const [priceFormat,setPriceFormat]=useState('')
+    const [cartUI,setCartUI]=useState([])
+    const [prices,setPrices]=useState([]);
     const addUser=(user)=>{
         setUser(user)
+    }
+    const priceMap=()=>{
+        let data=JSON.parse(localStorage.getItem('pricemap'))
+        setPrices(data)
     }
     const addToCart=(priceObj,quantity)=>{
         //restructure addToCart
@@ -142,6 +156,11 @@ export const StoreStateContextProvider=({children})=>{
        }
 
     }
+    const priceData=(val)=>{
+         setPriceVis((vals)=>{
+            return [...vals,val]
+         })
+    }
     const addToWishList=(priceObj,quantity)=>{
         const itemCheck=wishList.find((item)=>item.id===priceObj.id)
         console.log(itemCheck)
@@ -163,6 +182,22 @@ export const StoreStateContextProvider=({children})=>{
         
   
     }
+    let formatter=async(arr)=>{
+        const newArr=await arr
+        let data=newArr.toString().split('')
+        let check=Math.floor(data.length/2)
+        let newData=[data[check],'.']
+       data.splice(check,1,newData)
+        let finalFormat=data.flat().join('')
+        setPriceFormat(finalFormat)
+      }
+
+      let dataChecker=(prod)=>{
+        
+          const newData=prod.filter(item=> cartList.includes(item.default_price))
+          setCartUI(newData)
+          localStorage.setItem('cartUI',cartUI)
+      }
    
    
     return (
@@ -172,8 +207,9 @@ export const StoreStateContextProvider=({children})=>{
             decrement:decreaseQuantity,
             toggleQuantity:toggleCartItemQuantity, quantity:quantity, searchFilter:searchFilter,
             addToWishList:addToWishList, activeCart:activeCart, wishListQuantity:wishListQuantity, wishList:wishList, cartId:cartId,
-            removeFromCart:removeFromCart, addUser:addUser, user:user,  renderedCart:renderedCart
-
+            removeFromCart:removeFromCart, addUser:addUser, user:user,  renderedCart:renderedCart,
+            formatter:formatter,priceFormat:priceFormat,dataChecker:dataChecker,cartUI:cartUI,priceData:priceData,pricevis:pricevis,
+            currPrice:prices, priceMap:priceMap
         }} >
             {children}
         </StoreStateContext.Provider>

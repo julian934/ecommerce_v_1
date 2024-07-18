@@ -1,4 +1,5 @@
-
+import { getServerSession } from 'next-auth'
+import { authOptions } from '../api/auth/[...nextauth]/route'
 
 
 export const getPrice=async()=>{
@@ -23,3 +24,10 @@ export const getPrice=async()=>{
         console.log(error)
     }
  }
+
+ /*export const session=async()=>{
+    //const newSession=await getServerSession(authOptions);
+    const data=await fetch('/api/restricted')
+    return data
+ }
+ */

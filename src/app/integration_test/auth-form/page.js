@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import { useState,useEffect } from 'react'
 import { useStoreContext } from '../../context/storecontext'
-import { useSession } from 'next-auth/react';
+//import { useSession } from 'next-auth/react';
 //import { signIn } from 'next-auth/client';
 import { useRef } from 'react';
 import { signIn } from 'next-auth/react';
@@ -18,7 +18,7 @@ const AuthForm=()=>{
   const passwordInputRef=useRef();
   const ctx=useStoreContext()
   const [isLogin,setIsLogin]=useState(true)
-  const {data:session}=useSession();
+  //const {data:session}=useSession();
   const [data,setData]=useState({
       username:'',
       password:''

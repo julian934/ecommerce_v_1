@@ -1,11 +1,11 @@
 import NextAuth from "next-auth/next";
-import bcrypt from 'bcrypt'
-import { MongoClient } from "mongodb";
+//import bcrypt from 'bcrypt'
+//import { MongoClient } from "mongodb";
 import  CredentialsProvider  from "next-auth/providers/credentials";
 import { verifyPassword } from "@/app/lib/auth/page";
 import clientPromise from "../../mongo/adapter/route";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
-
+//import { MongoDBAdapter } from "@auth/mongodb-adapter";
+/*
 const client=new MongoClient(process.env.NEXT_PUBLIC_MONGO_SECRET_KEY);
 await client.connect();
 export const authOptions={
@@ -42,7 +42,8 @@ export const authOptions={
                         console.log('Secondary Hash:',newHash)
                         console.log(currentUser.hashedPassword)
                       
-                        const isValid=await bcrypt.compare(password,currentUser.hashedPassword)
+                        //const isValid=await bcrypt.compare(password,currentUser.hashedPassword)
+                        const isValid=await currentUser.hashedPassword
                         console.log(isValid)
                         
                         if(!isValid){
@@ -105,11 +106,12 @@ export const authOptions={
                 return session
 
             }
-        }*/
+        }
    
 
 }
-const handler=NextAuth(authOptions)
+*/
+//const handler=NextAuth(authOptions)
 
-export {handler as GET, handler as POST}
+//export {handler as GET, handler as POST}
 

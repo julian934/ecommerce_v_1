@@ -1,5 +1,6 @@
+/*
 import { MongoClient } from "mongodb"
-import bcrypt from 'bcrypt'
+//import bcrypt from 'bcrypt'
 import { NextResponse } from "next/server"
 //Got Response.status error. Fix immediately.
 export async function POST(request){
@@ -24,3 +25,4 @@ export async function POST(request){
 
     return NextResponse.json(dbData)
 }
+    */

@@ -35,7 +35,7 @@ async function createUser(username,password){
 const AuthForm = () => {
     const emailInputRef=useRef();
     const passwordInputRef=useRef();
-    const [isLogin,setIsLogin]=useState(true)
+    const [isLogin,setIsLogin]=useState(true);
    const {data:session}=useSession();
    
     const [data,setData]=useState({

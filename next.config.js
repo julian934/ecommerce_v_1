@@ -3,15 +3,7 @@ const nextConfig = {
     images:{
        domains:['files.stripe.com']
     },
-    async redirects(){
-        return[
-            {
-                source:'/',
-                destination:'/inventory',
-                permanent:true
-            }
-        ]
-    },
+   
     webpack:  (config, { isServer }) => {
         // Add a rule to handle HTML files
         config.module.rules.push({

@@ -4,7 +4,7 @@ import {StoreStateContextProvider} from '../app/context/storecontext'
 import { SessionProvider } from 'next-auth/react'
 //import Provider from './context/client-provider'
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from './api/auth/[...nextauth]/route'
+//import { authOptions } from './api/auth/[...nextauth]/route'
 import { Provider } from './provider'
 //import { getServerSession } from 'next-auth'
 const inter = Inter({ subsets: ['latin'] })
@@ -16,7 +16,7 @@ export const metadata = {
 
 export default async function RootLayout({ children}) {
 
-  const session=await getServerSession(authOptions)
+  //const session=await getServerSession(authOptions)
   return (
     <html lang="en">
       

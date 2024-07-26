@@ -4,9 +4,9 @@ import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experime
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { StoreStateContextProvider } from './context/storecontext';
-import { SessionProvider } from 'next-auth/react';
-import { session } from './queryFunc/queryData';
-import { useQuery } from '@tanstack/react-query';
+//import { SessionProvider } from 'next-auth/react';
+//import { session } from './queryFunc/queryData';
+//import { useQuery } from '@tanstack/react-query';
 
 const Provider = ({children}) => {
     const [client]=useState(new QueryClient());

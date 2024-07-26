@@ -7,7 +7,7 @@ import Link from 'next/link'
 import PricingCard from '../components/pricingcard'
 import Stripe from "stripe";
 import StoreStateContext from '@/app/context/storecontext'
-import {useSession} from "next-auth/react"
+//import {useSession} from "next-auth/react"
 import Navbar from '../components/NavBar/navbar'
 import NavTest from '../components/testNavBar/page'
 import Footer from '../components/footer/footer'

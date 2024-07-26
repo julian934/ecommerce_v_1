@@ -5,11 +5,7 @@ import {StoreStateContext, useStoreContext} from '../context/storecontext'
 import axios from 'axios'
 import Link from 'next/link';
 import Image from 'next/image'
-//import Stripe from 'stripe'
-//import { renderToReadableStream } from 'next/dist/server/app-render/entry-base'
 
-//Don't forget error and exception handling!!!
-//Deployment react server error is somewhere in CartItems
 
 const CartItems = ({prices, products,cartVals}) => {
    const [cartData,setCartData]=useState([]);

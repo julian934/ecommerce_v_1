@@ -10,7 +10,6 @@ import StoreStateContext from '@/app/context/storecontext'
 import {useSession} from "next-auth/react"
 import Navbar from '../components/NavBar/navbar'
 import NavTest from '../components/testNavBar/page'
-import { createClient } from 'next-sanity'
 import Footer from '../components/footer/footer'
 import Loading from '../components/loading/page'
 const stripePromise=loadStripe(

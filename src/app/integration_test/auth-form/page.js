@@ -1,5 +1,5 @@
 "use client"
-import suit from '../../images/man_in_suit.jpg'
+/*import suit from '../../images/man_in_suit.jpg'
 import Image from 'next/image'
 import React from 'react'
 import { useState,useEffect } from 'react'
@@ -189,3 +189,4 @@ const AuthForm=()=>{
 }
 
 export default AuthForm
+*/

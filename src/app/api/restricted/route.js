@@ -1,4 +1,4 @@
-import { getServerSession } from "next-auth";
+/*import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 
 export default async (req,res)=>{
@@ -16,3 +16,4 @@ export default async (req,res)=>{
         })
     }
 }
+    */

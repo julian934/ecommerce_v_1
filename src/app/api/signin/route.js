@@ -1,4 +1,4 @@
-
+/*
 import NextAuth from "next-auth/next";
 import  CredentialsProvider  from "next-auth/providers/credentials";
 import { MongoClient } from "mongodb";
@@ -55,3 +55,4 @@ const handler=NextAuth({
 
 export {handler as GET, handler as POST}
 
+*/

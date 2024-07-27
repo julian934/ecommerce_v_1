@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+/*import { MongoClient } from "mongodb";
 import { hashPassword } from "@/app/lib/auth/page";
 import { NextResponse } from "next/server";
 import { hash,hashSync } from "bcrypt";
@@ -44,3 +44,4 @@ export async function POST(request){
     return NextResponse.json(result)
 }
 
+*/

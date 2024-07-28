@@ -1,4 +1,4 @@
-'use client'
+/*'use client'
 import React from 'react'
 import { useState,useEffect } from 'react'
 //import { signIn } from 'next-auth/client';
@@ -113,3 +113,4 @@ const AuthForm = () => {
 }
 
 export default AuthForm
+*/

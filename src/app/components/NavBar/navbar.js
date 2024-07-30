@@ -3,7 +3,7 @@ import React from 'react'
 import axios from 'axios'
 import Link from 'next/link'
 import {useState,useEffect} from 'react'
-import { useStoreContext } from '@/app/context/storecontext'
+import { useStoreContext } from '../../context/storecontext'
 
 const Navbar = () => {
     //Put NavBar on every other page besides the Home Page

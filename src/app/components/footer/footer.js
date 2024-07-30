@@ -8,7 +8,7 @@ import LinkedIn from '../../images/icons8-linkedin-100.png'
 
 const Footer = () => {
   return (
-    <div className=" flex max-sm:w-full  max-sm:flex-col md:flex-col md:w-full md:self-end md:justify-center md:h-full  " >
+    <footer className=" flex max-sm:w-full  max-sm:flex-col md:flex-col md:w-full md:self-end md:justify-center md:h-full  " >
             <hr className=" border-gray-200 w-full  md:self-center flex md:pl-4 md:pr-4 md:justify-center md:w-2/3" />
             <div className=" flex md:self-center max-sm:flex-row max-sm:space-around max-sm:h-full border-black justify-around w-full md:w-3/4  " >
             
@@ -28,7 +28,7 @@ const Footer = () => {
                 <Image className=" flex space-between md:h-full max-sm:h-full " src={CopyRight} alt='copyright' /> <h3 className=" max-sm:self-center md:self-center md:justify-start md:h-full " > All Rights reserved by Julian Borner</h3>
             </div>
             {/* Social Media*/}
-      </div>
+      </footer>
   )
 }
 

@@ -1,14 +1,14 @@
 'use client'
 import axios from "axios"
 import {useState,useEffect, useCallback,useMemo,useContext} from 'react'
-import { useStoreContext } from "@/app/context/storecontext"
+import { useStoreContext } from "../../context/storecontext"
 //import Link from "next/link"
 //import Navbar from "@/app/components/revisedNav/navbar"
 //import Navbar from "@/app/components/revisedNav/page"
-import Footer from "@/app/components/footer/footer"
+import Footer from "../../components/footer/footer"
 import Image from "next/image"
 import { useQuery } from "@tanstack/react-query"
-import { getPrice } from "@/app/queryFunc/queryData"
+import { getPrice } from "../../queryFunc/queryData"
 //create a separate get request from the API backend that will give you access to the individual Stripe product data.
 
 const ProductDetails = ({params}) => {

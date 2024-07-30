@@ -1,11 +1,11 @@
-//import NextAuth from "next-auth/next";
-//import bcrypt from 'bcrypt'
-//import { MongoClient } from "mongodb";
-//import  CredentialsProvider  from "next-auth/providers/credentials";
-//import { verifyPassword } from "@/app/lib/auth/page";
-//import clientPromise from "../../mongo/adapter/route";
-//import { MongoDBAdapter } from "@auth/mongodb-adapter";
-/*
+import NextAuth from "next-auth/next";
+import bcrypt from 'bcrypt'
+import { MongoClient } from "mongodb";
+import  CredentialsProvider  from "next-auth/providers/credentials";
+import { verifyPassword } from "@/app/lib/auth/page";
+import clientPromise from "../../mongo/adapter/route";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+
 const client=new MongoClient(process.env.NEXT_PUBLIC_MONGO_SECRET_KEY);
 await client.connect();
 export const authOptions={
@@ -88,7 +88,7 @@ export const authOptions={
         },
         secret:process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
         //The Error lies in how callbacks are configured. Error message reads id.
-        /*callbacks:{
+        callbacks:{
             async jwt({token,account,profile}){
                 if(account){
                     token.accessToken=account.access_token
@@ -110,8 +110,8 @@ export const authOptions={
    
 
 }
-*/
-//const handler=NextAuth(authOptions)
 
-//export {handler as GET, handler as POST}
+const handler=NextAuth(authOptions)
+
+export {handler as GET, handler as POST}
 

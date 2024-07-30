@@ -2,7 +2,7 @@ import NextAuth from "next-auth/next";
 import bcrypt from 'bcrypt'
 import { MongoClient } from "mongodb";
 import  CredentialsProvider  from "next-auth/providers/credentials";
-import { verifyPassword } from "@/app/lib/auth/page";
+//import { verifyPassword } from "@/app/lib/auth/page";
 import clientPromise from "../../mongo/adapter/route";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 

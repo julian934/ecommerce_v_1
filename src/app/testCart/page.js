@@ -8,8 +8,8 @@ import axios from "axios"
 import Navbar from "../components/NavBar/navbar"
 import Footer from "../components/footer/footer"
 //import { getStripe } from '../utils/getClient/page'
-import { getProducts } from "../utils/getProducts/page"
-import { getPrices } from "../utils/getPrices/page"
+import { getProducts } from "../utils/getProducts/getProducts"
+import { getPrices } from "../utils/getPrices/getPrices"
 const Cart = () => {
     //const ctx=useStoreContext()
      //console.log(ctx.cartList)

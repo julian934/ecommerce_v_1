@@ -2,9 +2,9 @@
 import axios from "axios"
 import {useState,useEffect, useCallback,useMemo,useContext} from 'react'
 import { useStoreContext } from "@/app/context/storecontext"
-import Link from "next/link"
+//import Link from "next/link"
 //import Navbar from "@/app/components/revisedNav/navbar"
-import Navbar from "@/app/components/revisedNav/page"
+//import Navbar from "@/app/components/revisedNav/page"
 import Footer from "@/app/components/footer/footer"
 import Image from "next/image"
 import { useQuery } from "@tanstack/react-query"

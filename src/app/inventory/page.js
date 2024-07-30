@@ -2,21 +2,21 @@
 import React,{useState,useEffect,useContext} from 'react'
 import axios from 'axios'
 import { loadStripe } from '@stripe/stripe-js'
-import CheckoutButton from '../components/CheckoutButton'
-import Link from 'next/link'
+//import CheckoutButton from '../components/CheckoutButton'
+//import Link from 'next/link'
 import PricingCard from '../components/pricingcard'
-import Stripe from "stripe";
-import StoreStateContext from '@/app/context/storecontext'
+//import Stripe from "stripe";
+//import StoreStateContext from '@/app/context/storecontext'
 //import {useSession} from "next-auth/react"
 import Navbar from '../components/NavBar/navbar'
-import NavTest from '../components/testNavBar/page'
+//import NavTest from '../components/testNavBar/page'
 import Footer from '../components/footer/footer'
 import Loading from '../components/loading/page'
 const stripePromise=loadStripe(
     `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
 )
-import { useStoreContext } from '@/app/context/storecontext'
-import { useQuery } from '@tanstack/react-query'
+//import { useStoreContext } from '@/app/context/storecontext'
+//import { useQuery } from '@tanstack/react-query'
 //Add loading state for this page if data is not loaded yet.
 //Get Stock Images.
 //Create dynamic item details pages for inventory items & add to cart options from details page. 

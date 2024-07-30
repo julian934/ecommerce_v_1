@@ -1,8 +1,8 @@
 "use client"
 import React from 'react'
-import Footer from '@/app/components/footer/footer'
+//import Footer from '@/app/components/footer/footer'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+//import { useRouter } from 'next/router'
 //Continue work on sign up form integration.
 const SignUp = () => {
 

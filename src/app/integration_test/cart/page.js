@@ -1,6 +1,6 @@
 
 //Double Check if use server is necessary
-import CartItems from "@/app/components/cartItems"
+import CartItems from "../../components/cartItems"
 
 const Cart = () => {
   return (

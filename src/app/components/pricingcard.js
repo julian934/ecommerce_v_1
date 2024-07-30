@@ -6,7 +6,7 @@ import Link from 'next/link';
 import {useState,useEffect,useContext} from 'react'
 import {StoreStateContext, useStoreContext} from '../context/storecontext'
 import Image from 'next/image';
-
+//import type Product from '../utils/types/page'
 
 //revise the context and make sure it can take context.
 const PricingCard = ({product,prices,prodImage}) => {

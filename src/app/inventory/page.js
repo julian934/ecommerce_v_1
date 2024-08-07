@@ -12,6 +12,7 @@ import Navbar from '../components/NavBar/navbar'
 //import NavTest from '../components/testNavBar/page'
 import Footer from '../components/footer/footer'
 import Loading from '../components/loading/page'
+import { inventoryVals } from '../lib/metadata/metaValues'
 const stripePromise=loadStripe(
     `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`
 )
@@ -27,6 +28,7 @@ const stripePromise=loadStripe(
 //Add quantity option for cart.
 //Implement Footer
 //Center image options & choose a logo.
+
 const Index=(props)=>{
     
     const [products,setProducts]=useState([])

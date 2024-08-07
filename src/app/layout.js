@@ -8,11 +8,9 @@ import { getServerSession } from 'next-auth/next';
 import { Provider } from './provider'
 //import { getServerSession } from 'next-auth'
 const inter = Inter({ subsets: ['latin'] })
+import { appVals } from './lib/metadata/metaValues';
 
-export const metadata = {
-  title: 'Nuthread By Julian',
-  description: 'A full-stack e-commerce webshop designed and developed by Julian Borner.',
-}
+export const metadata = appVals
 
 export default async function RootLayout({ children}) {
 

@@ -10,6 +10,9 @@ import Footer from "../components/footer/footer"
 //import { getStripe } from '../utils/getClient/page'
 import { getProducts } from "../utils/getProducts/getProducts"
 import { getPrices } from "../utils/getPrices/getPrices"
+import { cartVals } from "../lib/metadata/metaValues"
+
+
 const Cart = () => {
     //const ctx=useStoreContext()
      //console.log(ctx.cartList)

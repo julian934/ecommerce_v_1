@@ -9,7 +9,10 @@ import Footer from "../../components/footer/footer"
 import Image from "next/image"
 import { useQuery } from "@tanstack/react-query"
 import { getPrice } from "../../queryFunc/queryData"
+import productDetailsVals from '../../lib/metadata/metaValues'
 //create a separate get request from the API backend that will give you access to the individual Stripe product data.
+
+
 
 const ProductDetails = ({params}) => {
   const [itemData,setItemData]=useState()
@@ -21,6 +24,7 @@ const ProductDetails = ({params}) => {
   const [currCart,setCurrCart]=useState([])
   const [checktest,setCheckTest]=useState([])
   const [currPrice,setCurrPrice]=useState()
+  
    console.log(params.slug)
    let slug=params.slug
    console.log(slug)
